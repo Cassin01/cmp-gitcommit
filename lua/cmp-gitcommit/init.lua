@@ -110,6 +110,7 @@ source.new = function()
 
   local types = {}
   for _, v in pairs(source.config['typesDict']) do
+    print(v)
     table.insert(types, v)
   end
   source.types = types
