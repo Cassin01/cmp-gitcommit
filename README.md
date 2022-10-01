@@ -20,6 +20,6 @@ require('cmp').setup {
 }
 ```
 
-## Reference
+## Forked from:
 
 [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)

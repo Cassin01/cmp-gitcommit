@@ -41,7 +41,6 @@ typesDict['test'] = {
 }
 
 -- TODO read from config
--- 
 
 source.new = function()
   return setmetatable({}, { __index = source })
@@ -62,15 +61,15 @@ end
 source.complete = function(self, request, callback)
   print(request.context.cursor.col)
   print(request.context.cursor.row)
-  if request.context.cursor.row ~= 1 or request.context.cursor.col ~= 1 then
-    return callback()
+  if (request.contexxt.option.reason == 'manual' and request.context.cursor.row == 1 and request.context.cursor.col == 1) or
+    (request.context.option.reason == 'auto' and request.context.cursor.row == 1 and request.context.cursor.col == 2) then
+    callback({
+        items = self:_get_candidates(self.types),
+        isIncomplete = true,
+      })
+  else
+    callback()
   end
-  local candidates = self:_get_candidates(self.types)
-  local items = {}
-  callback({
-    items = items,
-    isIncomplete = true,
-  })
 end
 
 function source:_get_candidates(entries)
