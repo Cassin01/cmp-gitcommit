@@ -72,13 +72,13 @@ local function load_scopes()
   local name_set = {}
   if scopes ~= "" then
     for s in scopes:gmatch("[^\r\n]+") do
-      table.insert(name_set, s, s)
+      name_set[s] = true
     end
   end
 
   local lines = {}
-  for k, v in pairs(name_set) do
-    lines:insert(v)
+  for k, _ in pairs(name_set) do
+    lines:insert(k)
   end
 
   return lines
