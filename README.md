@@ -1,5 +1,3 @@
-**this plugin is broken dont use**
-
 # cmp-gitcommit
 
 `gitcommit` source for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
