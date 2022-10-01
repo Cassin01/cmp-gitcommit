@@ -53,7 +53,7 @@ typesDict['test'] = {
 
 -- TODO read from config
 --
-function split (inputstr, sep)
+local function split (inputstr, sep)
         if sep == nil then
                 sep = "%s"
         end
@@ -64,19 +64,28 @@ function split (inputstr, sep)
         return t
 end
 
-source.new = function()
+local function load_scopes()
   local handle = io.popen([[git ls-files]])
   local scopes = handle:read("*a")
   handle:close()
 
-  local lines = {}
+  local name_set = {}
   if scopes ~= "" then
-    for s in scopes:gmatch("[^\r\n]+") do 
-      print(vim.inspect(split(s, [[/]])))
-      table.insert(lines, s) 
+    for s in scopes:gmatch("[^\r\n]+") do
+      table.insert(name_set, s, s)
     end
   end
-  source.scopes = lines
+
+  local lines = {}
+  for k, v in pairs(name_set) do
+    lines:insert(v)
+  end
+
+  return lines
+end
+
+source.new = function()
+  source.scopes = load_scopes()
 
   source.types = {
     typesDict['build'], typesDict['chore'], typesDict['ci'],
