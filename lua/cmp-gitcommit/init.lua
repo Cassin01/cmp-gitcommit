@@ -77,7 +77,7 @@ local function split (inputstr, sep)
         return t
 end
 
-local function load_scopes()
+local function load_names()
   local handle = io.popen([[git ls-files]])
   local scopes = handle:read("*a")
   handle:close()
@@ -105,7 +105,7 @@ local function load_scopes()
 end
 
 source.new = function()
-  source.scopes = load_scopes()
+  source.names = load_names()
 
   local types = {}
   for _, v in pairs(source.config['typesDict']) do
@@ -150,15 +150,14 @@ source.complete = function(self, request, callback)
     local line = vim.api.nvim_get_current_line()
     for k, _ in pairs(source.config['typesDict']) do
       local index = string.match(line,[[^(]] .. k .. [[).*]])
-      print(index)
-      if index ~= nil then
+      if index ~= nil and self.config.typesDict[index].scopes ~= nil then
         return callback({
-            items = self:_get_candidates_scope(self.scopes[index]),
+            items = self:_get_candidates_scope(self.config.typesDict[index].scopes),
             isIncomplete = true
           })
       end
-      callback()
     end
+    callback()
   else
     callback()
   end
