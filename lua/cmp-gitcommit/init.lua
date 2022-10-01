@@ -56,10 +56,10 @@ typesDict['test'] = {
 function source.setup(config) 
   local cnf = config or {}
   local ret = {}
-  if cnf['typesDict'] ~= nil then
+  if cnf['typesDict'] == nil then
     ret['typesDict'] = typesDict
   end
-  if cnf['insertText'] ~= nil then
+  if cnf['insertText'] == nil then
     ret['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
   end
   vim.g.cmp_gitcomment_config = ret
