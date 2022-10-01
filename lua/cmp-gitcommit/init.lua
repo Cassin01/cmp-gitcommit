@@ -53,18 +53,13 @@ typesDict['test'] = {
   documentation = 'Adding missing tests or correcting existing tests',
 }
 
-source.config = {}
-source.config['typesDict'] = typesDict
-source.config['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
-
 function source.setup(config) 
-  print("setup called")
-  local cnf = config or source.config
+  local cnf = config or {}
   if cnf['typesDict'] ~= nil then
-    source.config['typesDict'] = cnf['typesDict']
+    source.config['typesDict'] = typesDict
   end
   if cnf['insertText'] ~= nil then
-    source.conofig['insertText'] = cnf['insertText']
+    source.conofig['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
   end
 end
 
