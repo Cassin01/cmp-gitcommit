@@ -51,8 +51,15 @@ typesDict['test'] = {
   documentation = 'Adding missing tests or correcting existing tests',
 }
 
--- TODO read from config
---
+function source.setup(config) 
+  local cnf = config or {}
+  if cnf['typesDict'] ~= nil then
+    return cnf['typesDict']
+  else
+    return typesDict
+  end
+end
+
 local function split (inputstr, sep)
         if sep == nil then
                 sep = "%s"
@@ -94,12 +101,8 @@ end
 source.new = function()
   source.scopes = load_scopes()
 
-  source.types = {
-    typesDict['build'], typesDict['chore'], typesDict['ci'],
-    typesDict['docs'], typesDict['feat'], typesDict['fix'], typesDict['perf'],
-    typesDict['refactor'], typesDict['revert'], typesDict['style'],
-    typesDict['test'],
-  }
+  source.types = source.setup()
+
   return setmetatable({}, { __index = source })
 end
 
