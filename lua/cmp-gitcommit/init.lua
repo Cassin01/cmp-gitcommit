@@ -62,7 +62,8 @@ function source.setup(config)
   if cnf['insertText'] ~= nil then
     ret['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
   end
-  vim.g['cmp_gitcomment_config'] = ret
+  vim.g.cmp_gitcomment_config = ret
+  print(vim.inspect(vim.g.cmp_gitcomment_config))
 end
 
 local function split (inputstr, sep)
