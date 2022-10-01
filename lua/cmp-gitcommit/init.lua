@@ -104,7 +104,7 @@ source.new = function()
   -- source.types = source.setup()
   -- print("ff")
   -- print(vim.inspect(source.types))
-  for k, v in pairs(source.types) do
+  for k, v in pairs(source.setup()) do
     table.insert(source.types, v)
   end
   -- source.types = {
