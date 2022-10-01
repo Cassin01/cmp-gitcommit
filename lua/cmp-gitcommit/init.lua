@@ -43,6 +43,12 @@ typesDict['test'] = {
 -- TODO read from config
 
 source.new = function()
+  source.types = {
+    typesDict['build'], typesDict['chore'], typesDict['ci'],
+    typesDict['docs'], typesDict['feat'], typesDict['fix'], typesDict['perf'],
+    typesDict['refactor'], typesDict['revert'], typesDict['style'],
+    typesDict['test'],
+  }
   return setmetatable({}, { __index = source })
 end
 
