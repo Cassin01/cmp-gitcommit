@@ -35,6 +35,12 @@ use {
   config = function()
     require('gitsigns').setup({
       typesDict = {
+        ci = {
+          label = 'ci',
+          emoji = '👷',
+          documentation = 'Changes to our CI configuration files and scripts',
+          scopes = {'Travisi', 'Circle', 'BrowserStack', 'SauceLabs'} -- FEATURE custom scopes !!
+        }
         style = {
           label = 'style',
           emoji = '🎨',
