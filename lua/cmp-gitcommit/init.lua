@@ -63,9 +63,7 @@ function source.setup(config)
     ret['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
   end
   vim.g.cmp_gitcomment_config = ret
-  print("hoge")
-  print(vim.inspect(ret))
-  print(vim.inspect(vim.g.cmp_gitcomment_config))
+  print("setup called")
 end
 
 local function split (inputstr, sep)
@@ -107,7 +105,8 @@ local function load_names()
 end
 
 source.new = function()
-  source['config'] = vim.g['cmp_gitcomment_config']
+  source.config = vim.g.cmp_gitcomment_config
+  print(vim.inspect(source.config))
   source.names = load_names()
 
   local types = {}
