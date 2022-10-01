@@ -29,7 +29,7 @@ sources for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 <details>
 <summary>gif</summary>
 
-![gif](https://github.com/Cassin01/cmp-gitcommit/blob/7e71945599a6c0db6caeb4b2045986af976d55ad/asset/commit.gif)
+![gif](https://github.com/Cassin01/cmp-gitcommit/blob/f8260925b519471a68f25c81f345ca414ad2f30a/asset/screenshot.gif)
 
 </details>
 
