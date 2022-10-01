@@ -51,12 +51,17 @@ typesDict['test'] = {
   documentation = 'Adding missing tests or correcting existing tests',
 }
 
+source.config = {}
+source.config['typesDict'] = typesDict
+source.config['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
+
 function source.setup(config) 
-  local cnf = config or {}
+  local cnf = config or source.config
   if cnf['typesDict'] ~= nil then
-    return cnf['typesDict']
-  else
-    return typesDict
+    source.config['typesDict'] = cnf['typesDict']
+  end
+  if cnf['insertText'] ~= nil then
+    source.conofig['insertText'] = cnf['insertText']
   end
 end
 
@@ -101,21 +106,11 @@ end
 source.new = function()
   source.scopes = load_scopes()
 
-  -- source.types = source.setup()
-  -- print("ff")
-  -- print(vim.inspect(source.types))
   local types = {}
-  for k, v in pairs(source.setup()) do
+  for _, v in pairs(source.config['typesDict']) do
     table.insert(types, v)
   end
   source.types = types
-  -- source.types = {
-  --   typesDict['build'], typesDict['chore'], typesDict['ci'],
-  --   typesDict['docs'], typesDict['feat'], typesDict['fix'], typesDict['perf'],
-  --   typesDict['refactor'], typesDict['revert'], typesDict['style'],
-  --   typesDict['test'],
-  -- }
-  print(vim.inspect(source.types))
 
   return setmetatable({}, { __index = source })
 end
@@ -165,7 +160,7 @@ function source:_get_candidates(entries)
   for k, v in ipairs(entries) do
     items[k] = {
       label = v.label,
-      insertText = v.label .. ':' .. v.emoji .. ' ',
+      insertText = source.config['insertText'](v.label, v.emoji),
       kind = require('cmp').lsp.CompletionItemKind.Keyword,
       documentation = v.documentation,
     }
