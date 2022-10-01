@@ -86,7 +86,6 @@ end
 local function is_scope(request)
   local line = vim.api.nvim_get_current_line()
   local col = request.context.cursor.col
-  -- local char = line[col]
   local char = line:sub(col, col)
   if char ~= nil and char == ')' then
     return true
@@ -95,7 +94,6 @@ local function is_scope(request)
 end
 
 source.complete = function(self, request, callback)
-  print(is_scope(request))
   if (request.context.option.reason == 'manual' and request.context.cursor.row == 1 and request.context.cursor.col == 1) or
     (request.context.option.reason == 'auto' and request.context.cursor.row == 1 and request.context.cursor.col == 2) then
     callback({
@@ -103,7 +101,7 @@ source.complete = function(self, request, callback)
         isIncomplete = true,
       })
 
-  elseif request.context.cursor_after_line == ")" and request.context.cursor.row == 1 then
+  elseif is_scope(request) and request.context.cursor.row == 1 then
     callback({
       items = self:_get_candidates_scope(self.scopes),
       isIncomplete = true
