@@ -84,7 +84,7 @@ source.get_keyword_pattern = function()
 end
 
 source.complete = function(self, request, callback)
-  local res = vim.api.nvim_exec([[matchstr(getline('.'), '\%'.col('.').'c.')]])
+  local res = vim.api.nvim_exec([[call matchstr(getline('.'), '\%'.col('.').'c.')]], true)
   print(res)
   if (request.context.option.reason == 'manual' and request.context.cursor.row == 1 and request.context.cursor.col == 1) or
     (request.context.option.reason == 'auto' and request.context.cursor.row == 1 and request.context.cursor.col == 2) then
