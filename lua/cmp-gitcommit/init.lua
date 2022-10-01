@@ -72,7 +72,8 @@ local function load_scopes()
   local names = {}
   if scopes ~= "" then
     for line in scopes:gmatch("[^\r\n]+") do
-      for name in split(line, [[/]]) do
+      local splited = split(line, [[/]])
+      for name in splited do
         names.insert(name)
       end
     end
