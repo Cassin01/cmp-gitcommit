@@ -92,7 +92,7 @@ local function is_scope(request)
 end
 
 source.complete = function(self, request, callback)
-  print(is_scope())
+  print(is_scope(request))
   if (request.context.option.reason == 'manual' and request.context.cursor.row == 1 and request.context.cursor.col == 1) or
     (request.context.option.reason == 'auto' and request.context.cursor.row == 1 and request.context.cursor.col == 2) then
     callback({
