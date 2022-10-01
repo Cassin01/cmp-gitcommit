@@ -85,10 +85,13 @@ end
 
 local function is_scope(request)
   local line = vim.api.nvim_get_current_line()
+  local col = request.context.cursor.col
   -- local char = line[col]
-  print(line)
-  print(request.context.cursor.col)
-  return true
+  local char = line:string():sub(col, col)
+  if char ~= nil and char == ')' then
+    return true
+  end
+  return false
 end
 
 source.complete = function(self, request, callback)
