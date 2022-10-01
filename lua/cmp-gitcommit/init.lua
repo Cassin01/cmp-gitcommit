@@ -181,6 +181,7 @@ end
 function source:_get_candidates_scope(entries)
   local items = {}
   for k, v in ipairs(entries) do
+    print(v)
     items[k] = {
       label = v,
       documentation = 'scope',
