@@ -40,6 +40,8 @@ typesDict['test'] = {
   documentation = 'Adding missing tests or correcting existing tests',
 }
 
+-- TODO read from config
+
 source.new = function()
   return setmetatable({}, { __index = source })
 end
