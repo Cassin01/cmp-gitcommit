@@ -33,4 +33,4 @@ require('cmp').setup {
 
 ## TODO
 
-- [ ] Enable to use the configuration of `Cassin01/rcz`
+- [ ] use the configuration of [rcz](https://github.com/Cassin01/rcz)
