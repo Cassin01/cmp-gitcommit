@@ -81,4 +81,3 @@ function source:_get_candidates(entries)
 end
 
  return source
--- 2343
