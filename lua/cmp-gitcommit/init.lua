@@ -62,6 +62,7 @@ function source.setup(config)
   if cnf['insertText'] == nil then
     ret['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
   end
+  vim.g.cmp_gitcommit_config = ret
   return ret
 end
 
@@ -104,7 +105,7 @@ local function load_names()
 end
 
 source.new = function()
-  source.config = source.setup({})
+  source.config = vim.g.cmp_gitcommit_config or source.setup({})
   source.names = load_names()
 
   local types = {}

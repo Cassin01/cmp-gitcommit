@@ -46,3 +46,34 @@ require('cmp').setup {
   sources = require'cmp'.config.sources({{ name = 'gitcommit' }})
 }
 ```
+
+## Configuration
+```lua
+use {
+   -- ...
+   config = function()
+     require('cmp-gitcommit').setup({
+       typesDict = {
+         ci = {
+           label = 'ci',
+           emoji = '👷',
+           documentation = 'Changes to our CI configuration files and scripts',
+           scopes = {'Travisi', 'Circle', 'BrowserStack', 'SauceLabs'} -- FEATURE custom scopes !!
+         }
+         style = {
+           label = 'style',
+           emoji = '🎨',
+           documentation = 'Changes that do not affect the meaning of the code',
+         }
+         test = {
+           label = 'test',
+           emoji = '🚨',
+           documentation = 'Adding missing tests or correcting existing tests',
+         }
+         -- ...
+       }
+       insertText = function(label, emoji) return label .. ":" .. emoji .. ' ' end
+     })
+   end
+}
+```
