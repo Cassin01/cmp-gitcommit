@@ -3,40 +3,51 @@ local source = {}
 local typesDict = {}
 typesDict['build'] = {
   label = 'build',
+  emoji = '🔨',
   documentation = 'Changes that affect the build system or external dependencies',
 }
 typesDict['chore'] = {
   label = 'chore',
+  emoji = '🤖',
   documentation = 'Other changes that dont modify src or test files',
 }
 typesDict['ci'] = {
   label = 'ci',
+  emoji = '👷',
   documentation = 'Changes to our CI configuration files and scripts',
 }
 typesDict['docs'] = {
   label = 'docs',
+  emoji = '📚',
   documentation = 'Documentation only changes',
 }
-typesDict['feat'] = {label = 'feat', documentation = 'A new feature'}
-typesDict['fix'] = {label = 'fix', documentation = 'A bug fix'}
+typesDict['feat'] = {label = 'feat',
+  emoji= '✨',
+documentation = 'A new feature'}
+typesDict['fix'] = {label = 'fix',emoji = '🐛' , documentation = 'A bug fix'}
 typesDict['perf'] = {
   label = 'perf',
+  emoji = '⚡️',
   documentation = 'A code change that improves performance',
 }
 typesDict['refactor'] = {
   label = 'refactor',
+  emoji = '🧹',
   documentation = 'A code change that neither fixes a bug nor adds a feature',
 }
 typesDict['revert'] = {
   label = 'revert',
+  emoji = '⏪',
   documentation = 'Reverts a previous commit',
 }
 typesDict['style'] = {
   label = 'style',
+  emoji = '🎨',
   documentation = 'Changes that do not affect the meaning of the code',
 }
 typesDict['test'] = {
   label = 'test',
+  emoji = '🚨',
   documentation = 'Adding missing tests or correcting existing tests',
 }
 
@@ -61,7 +72,7 @@ source.get_debug_name = function()
 end
 
 source.get_keyword_pattern = function()
-return [[\w\+]]
+  return [[\w\+]]
 end
 
 source.complete = function(self, request, callback)
@@ -78,9 +89,10 @@ end
 
 function source:_get_candidates(entries)
   local items = {}
-   for k, v in ipairs(entries) do
+  for k, v in ipairs(entries) do
     items[k] = {
       label = v.label,
+      insertText = v.label .. ':' .. v.emoji .. ' ',
       kind = require('cmp').lsp.CompletionItemKind.Keyword,
       documentation = v.documentation,
     }
@@ -88,4 +100,4 @@ function source:_get_candidates(entries)
   return items
 end
 
- return source
+return source
