@@ -27,6 +27,32 @@ require('cmp').setup {
 }
 ```
 
+## Configuration
+
+```lua
+use {
+  -- ...
+  config = function()
+    require('gitsigns').setup({
+      typesDict = {
+        style = {
+          label = 'style',
+          emoji = '🎨',
+          documentation = 'Changes that do not affect the meaning of the code',
+        }
+        test = {
+          label = 'test',
+          emoji = '🚨',
+          documentation = 'Adding missing tests or correcting existing tests',
+        }
+        -- ...
+      }
+      insertText = function(label, emoji) return label .. ":" .. emoji .. ' ' end
+    })
+  end
+}
+```
+
 ## Forked from:
 
 [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
