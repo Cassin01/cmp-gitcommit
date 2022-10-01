@@ -157,11 +157,13 @@ source.complete = function(self, request, callback)
       end
     end
     callback()
-  else
+  elseif request.context.option.reason == 'auto' then
     callback({
         items = self:_get_candidates_name(self.names),
         isIncomplete = true,
       })
+  else
+    callback()
   end
 end
 
@@ -197,7 +199,7 @@ function source:_get_candidates_name(entries)
     items[k] = {
       label = v,
       documentation = 'tracked path object',
-      kind = require('cmp').lsp.CompletionItemKind.Keyword,
+      kind = require('cmp').lsp.CompletionItemKind.File,
     }
   end
   return items
