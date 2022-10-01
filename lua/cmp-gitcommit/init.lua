@@ -69,23 +69,28 @@ local function load_scopes()
   local scopes = handle:read("*a")
   handle:close()
 
-  local name_set = {}
+  local names = {}
   if scopes ~= "" then
-    for s in scopes:gmatch("[^\r\n]+") do
-      name_set[s] = true
+    for line in scopes:gmatch("[^\r\n]+") do
+      for name in split(line, [[/]]) do
+        names.insert(name)
+      end
     end
   end
 
-  print(vim.inspect(name_set))
-
-  local lines = {}
-  for k, _ in pairs(name_set) do
-    table.insert(lines, k)
+  local set = {}
+  for name in names do
+    set[name] = true
   end
 
-  print(vim.inspect(lines))
+  local candidates = {}
+  for k, _ in pairs(set) do
+    table.insert(candidates, k)
+  end
 
-  return lines
+  print(vim.inspect(candidates))
+
+  return candidates
 end
 
 source.new = function()
