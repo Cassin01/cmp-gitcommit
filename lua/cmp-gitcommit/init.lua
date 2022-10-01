@@ -101,15 +101,18 @@ end
 source.new = function()
   source.scopes = load_scopes()
 
-  source.types = source.setup()
-  print("ff")
-  print(vim.inspect(source.types))
-  source.types = {
-    typesDict['build'], typesDict['chore'], typesDict['ci'],
-    typesDict['docs'], typesDict['feat'], typesDict['fix'], typesDict['perf'],
-    typesDict['refactor'], typesDict['revert'], typesDict['style'],
-    typesDict['test'],
-  }
+  -- source.types = source.setup()
+  -- print("ff")
+  -- print(vim.inspect(source.types))
+  for k, v in pairs(source.types) do
+    table.insert(source.types, v)
+  end
+  -- source.types = {
+  --   typesDict['build'], typesDict['chore'], typesDict['ci'],
+  --   typesDict['docs'], typesDict['feat'], typesDict['fix'], typesDict['perf'],
+  --   typesDict['refactor'], typesDict['revert'], typesDict['style'],
+  --   typesDict['test'],
+  -- }
   print(vim.inspect(source.types))
 
   return setmetatable({}, { __index = source })
