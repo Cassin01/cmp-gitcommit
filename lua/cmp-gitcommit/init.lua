@@ -83,10 +83,15 @@ source.get_keyword_pattern = function()
   return [[\w\+]]
 end
 
-source.complete = function(self, request, callback)
+local function is_scope()
   local _, col = vim.api.nvim_win_get_cursor(0)
-  local char = vim.api.nvim_get_current_line[col]
-  print(char)
+  local line = vim.api.nvim_get_current_line()
+  local char = line[col]
+  return true
+end
+
+source.complete = function(self, request, callback)
+  print(is_scope())
   if (request.context.option.reason == 'manual' and request.context.cursor.row == 1 and request.context.cursor.col == 1) or
     (request.context.option.reason == 'auto' and request.context.cursor.row == 1 and request.context.cursor.col == 2) then
     callback({
