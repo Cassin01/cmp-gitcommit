@@ -8,7 +8,7 @@
 
 ### Features that cmp-gitcommit provides but cmp-conventionalcommits
 
-- fixed source unregistered bug
+- no source unregistered bug
 - no npm dependencies
 
 ### Features that cmp-conventionalcommits provides but cmp-gitcommit
