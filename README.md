@@ -23,3 +23,7 @@ require('cmp').setup {
 ## Forked from:
 
 [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
+
+## TODO
+
+- [ ] Enable to use the configuration of `Cassin01/rcz`
