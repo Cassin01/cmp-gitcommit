@@ -83,12 +83,11 @@ source.get_keyword_pattern = function()
   return [[\w\+]]
 end
 
-local function is_scope()
-  local _, col = vim.api.nvim_win_get_cursor(0)
+local function is_scope(request)
   local line = vim.api.nvim_get_current_line()
   -- local char = line[col]
   print(line)
-  print(col)
+  print(request.context.cursor.col)
   return true
 end
 
