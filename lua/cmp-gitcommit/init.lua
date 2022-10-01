@@ -63,6 +63,8 @@ function source.setup(config)
     ret['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
   end
   vim.g.cmp_gitcomment_config = ret
+  print("hoge")
+  print(vim.inspect(ret))
   print(vim.inspect(vim.g.cmp_gitcomment_config))
 end
 
