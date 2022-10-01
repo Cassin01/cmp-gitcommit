@@ -106,7 +106,6 @@ end
 
 source.new = function()
   source.config = vim.g.cmp_gitcomment_config
-  print(vim.inspect(vim.g.cmp_gitcomment_config))
   source.names = load_names()
 
   local types = {}
