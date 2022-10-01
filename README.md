@@ -4,6 +4,8 @@
 
 forked from [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
 
+**this plugin is still in development**
+
 <details>
 <summary>gif</summary>
 
