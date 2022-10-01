@@ -52,13 +52,29 @@ typesDict['test'] = {
 }
 
 -- TODO read from config
+--
+function split (inputstr, sep)
+        if sep == nil then
+                sep = "%s"
+        end
+        local t={}
+        for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+                table.insert(t, str)
+        end
+        return t
+end
 
 source.new = function()
-  local scopes = io.popen([[git ls-files]]):read("*a")
+  local handle = io.popen([[git ls-files]])
+  local scopes = handle:read("*a")
+  handle:close()
 
   local lines = {}
   if scopes ~= "" then
-    for s in scopes:gmatch("[^\r\n]+") do table.insert(lines, s) end
+    for s in scopes:gmatch("[^\r\n]+") do 
+      print(vim.inspect(split(s, [[/]])))
+      table.insert(lines, s) 
+    end
   end
   source.scopes = lines
 
@@ -87,7 +103,6 @@ local function is_scope(request)
   local line = vim.api.nvim_get_current_line()
   local col = request.context.cursor.col
   local char = line:sub(col, col)
-  print(char)
   if char ~= nil and char == ')' then
     return true
   end
