@@ -161,6 +161,7 @@ function source:_get_candidates_scope(entries)
   for k, v in ipairs(entries) do
     items[k] = {
       label = v,
+      documentation = 'scope',
       kind = require('cmp').lsp.CompletionItemKind.Folder,
     }
   end
