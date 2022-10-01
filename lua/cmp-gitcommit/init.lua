@@ -73,7 +73,7 @@ local function load_scopes()
   if scopes ~= "" then
     for line in scopes:gmatch("[^\r\n]+") do
       for _, name in ipairs(split(line, [[/]])) do
-        names.insert(name)
+        table.insert(names, name)
       end
     end
   end
