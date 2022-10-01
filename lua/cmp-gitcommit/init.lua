@@ -88,8 +88,6 @@ local function load_scopes()
     table.insert(candidates, k)
   end
 
-  print(vim.inspect(candidates))
-
   return candidates
 end
 
