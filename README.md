@@ -11,6 +11,11 @@
 - user configuration
 - no npm dependencies
 
+### Features that cmp-conventionalcommits provides but cmp-gitcommit
+
+- commitlint support
+- lerna support
+
 ### Sources that this plugin provides
 
 This plugin provides
