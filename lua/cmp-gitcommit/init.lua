@@ -54,6 +54,14 @@ typesDict['test'] = {
 -- TODO read from config
 
 source.new = function()
+  local scopes = io.popen([[git ls-files]]):read("*a")
+
+  local lines = {}
+  if scopes ~= "" then
+    for s in scopes:gmatch("[^\r\n]+") do table.insert(lines, s) end
+  end
+  source.scopes = lines
+
   source.types = {
     typesDict['build'], typesDict['chore'], typesDict['ci'],
     typesDict['docs'], typesDict['feat'], typesDict['fix'], typesDict['perf'],
@@ -82,6 +90,11 @@ source.complete = function(self, request, callback)
         items = self:_get_candidates(self.types),
         isIncomplete = true,
       })
+  elseif request.context.cursor_after_line == ")" and request.context.cursor.row == 1 then
+    callback({
+      items = self:_get_candidates_scope(self.scopes),
+      isIncomplete = true
+    })
   else
     callback()
   end
@@ -95,6 +108,18 @@ function source:_get_candidates(entries)
       insertText = v.label .. ':' .. v.emoji .. ' ',
       kind = require('cmp').lsp.CompletionItemKind.Keyword,
       documentation = v.documentation,
+    }
+  end
+  return items
+end
+
+function source:_get_candidates_scope(entries)
+  local items = {}
+  for k, v in ipairs(entries) do
+    print(vim.inspect(getmetatable(v)))
+    items[k] = {
+      label = v,
+      kind = require('cmp').lsp.CompletionItemKind.Folder,
     }
   end
   return items
