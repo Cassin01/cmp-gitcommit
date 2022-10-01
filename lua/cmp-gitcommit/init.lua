@@ -84,6 +84,7 @@ source.get_keyword_pattern = function()
 end
 
 source.complete = function(self, request, callback)
+  print(vim.inspect(request.context))
   if (request.context.option.reason == 'manual' and request.context.cursor.row == 1 and request.context.cursor.col == 1) or
     (request.context.option.reason == 'auto' and request.context.cursor.row == 1 and request.context.cursor.col == 2) then
     callback({
@@ -116,7 +117,6 @@ end
 function source:_get_candidates_scope(entries)
   local items = {}
   for k, v in ipairs(entries) do
-    print(vim.inspect(getmetatable(v)))
     items[k] = {
       label = v,
       kind = require('cmp').lsp.CompletionItemKind.Folder,
