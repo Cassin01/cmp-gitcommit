@@ -78,7 +78,7 @@ local function load_scopes()
 
   local lines = {}
   for k, _ in pairs(name_set) do
-    lines:insert(k)
+    table.insert(lines, k)
   end
 
   return lines
