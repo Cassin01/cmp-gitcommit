@@ -87,7 +87,7 @@ local function is_scope(request)
   local line = vim.api.nvim_get_current_line()
   local col = request.context.cursor.col
   -- local char = line[col]
-  local char = line:string():sub(col, col)
+  local char = line:sub(col, col)
   if char ~= nil and char == ')' then
     return true
   end
