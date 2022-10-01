@@ -145,7 +145,6 @@ source.complete = function(self, request, callback)
         items = self:_get_candidates(self.types),
         isIncomplete = true,
       })
-
   elseif is_scope(request) and request.context.cursor.row == 1 then
     local line = vim.api.nvim_get_current_line()
     for k, _ in pairs(source.config['typesDict']) do
@@ -161,7 +160,10 @@ source.complete = function(self, request, callback)
     end
     callback()
   else
-    callback()
+    callback({
+        items = self:_get_candidates(self.names),
+        isIncomplete = true,
+      })
   end
 end
 
@@ -184,6 +186,18 @@ function source:_get_candidates_scope(entries)
     items[k] = {
       label = v,
       documentation = 'scope',
+      kind = require('cmp').lsp.CompletionItemKind.Folder,
+    }
+  end
+  return items
+end
+
+function source:_get_candidates_name(entries)
+  local items = {}
+  for k, v in ipairs(entries) do
+    items[k] = {
+      label = v,
+      documentation = 'tracked path object',
       kind = require('cmp').lsp.CompletionItemKind.Folder,
     }
   end
