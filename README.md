@@ -4,6 +4,16 @@
 
 forked from [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
 
+## Features
+
+This plugin provides
+
+- types (`ci: 👷`, `ci`, `ci:`, etc)
+- scopes (`Travisi`, `Circle`, `BrowserStack`, etc)
+- tracked path object (`README.md`, `src`, `.gitignore`, etc)
+
+sources for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+
 <details>
 <summary>gif</summary>
 
