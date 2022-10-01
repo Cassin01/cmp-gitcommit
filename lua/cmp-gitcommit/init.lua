@@ -60,7 +60,7 @@ return [[\w\+]]
 end
 
 source.complete = function(self, request, callback)
-  print(request.context.cursor.pos)
+  print(request.context.cursor.col)
   print(request.context.cursor.row)
   if request.context.cursor.row ~= 1 or request.context.cursor.col ~= 1 then
     return callback()
