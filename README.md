@@ -1,3 +1,5 @@
+**this plugin is broken dont use**
+
 # cmp-gitcommit
 
 `gitcommit` source for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
@@ -42,10 +44,11 @@ use { 'Cassin01/cmp-gitcommit', after = { 'nvim-cmp' } }
 ```
 
 ```lua
-require('cmp').setup {
-  sources = {
-    { name = 'gitcommit' }
-  }
+require('cmp').setup.buffer {
+  sources = require'cmp'.config.sources(
+  {{ name = 'gitcommit' }},
+  {{ name = 'buffer' }},
+  )
 }
 ```
 
