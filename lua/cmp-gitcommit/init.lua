@@ -199,7 +199,7 @@ function source:_get_candidates_name(entries)
     items[k] = {
       label = v,
       documentation = 'tracked path object',
-      kind = require('cmp').lsp.CompletionItemKind.Folder,
+      kind = require('cmp').lsp.CompletionItemKind.Keyword,
     }
   end
   return items
