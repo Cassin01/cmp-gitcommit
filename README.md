@@ -2,9 +2,16 @@
 
 `gitcommit` source for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 
-forked from [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
+`cmp-gitcommit` is a fork of [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
 
 ## Features
+
+### Features that cmp-gitcommit provides but cmp-conventionalcommits
+
+- user configuration
+- no npm dependencies
+
+### Sources that this plugin provides
 
 This plugin provides
 
@@ -68,8 +75,3 @@ use {
   end
 }
 ```
-
-## Forked from:
-
-[cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
-
