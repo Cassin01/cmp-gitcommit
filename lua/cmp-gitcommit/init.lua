@@ -87,6 +87,7 @@ local function is_scope()
   local _, col = vim.api.nvim_win_get_cursor(0)
   local line = vim.api.nvim_get_current_line()
   local char = line[col]
+  print(char)
   return true
 end
 
