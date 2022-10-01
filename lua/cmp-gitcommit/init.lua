@@ -53,7 +53,7 @@ typesDict['test'] = {
   documentation = 'Adding missing tests or correcting existing tests',
 }
 
-function source.setup(config) 
+function source.setup(config)
   local cnf = config or {}
   local ret = {}
   if cnf['typesDict'] == nil then
@@ -62,8 +62,7 @@ function source.setup(config)
   if cnf['insertText'] == nil then
     ret['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
   end
-  vim.g.cmp_gitcomment_config = ret
-  print("setup called")
+  return ret
 end
 
 local function split (inputstr, sep)
@@ -105,12 +104,11 @@ local function load_names()
 end
 
 source.new = function()
-  source.config = vim.g.cmp_gitcomment_config
+  source.config = source.setup({})
   source.names = load_names()
 
   local types = {}
   for _, v in pairs(source.config['typesDict']) do
-    print(v)
     table.insert(types, v)
   end
   source.types = types
