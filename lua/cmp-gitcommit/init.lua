@@ -80,5 +80,4 @@ function source:_get_candidates(entries)
 end
 
  return source
-
--- ref: https://github.com/davidsierradz/cmp-conventionalcommits/blob/master/lua/cmp-conventionalcommits/init.lua
+-- 2343
