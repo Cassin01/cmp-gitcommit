@@ -76,10 +76,14 @@ local function load_scopes()
     end
   end
 
+  print(vim.inspect(name_set))
+
   local lines = {}
   for k, _ in pairs(name_set) do
     table.insert(lines, k)
   end
+
+  print(vim.inspect(lines))
 
   return lines
 end
