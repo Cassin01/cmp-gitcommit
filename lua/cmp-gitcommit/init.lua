@@ -161,7 +161,7 @@ source.complete = function(self, request, callback)
     callback()
   else
     callback({
-        items = self:_get_candidates(self.names),
+        items = self:_get_candidates_name(self.names),
         isIncomplete = true,
       })
   end
