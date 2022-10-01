@@ -150,9 +150,11 @@ source.complete = function(self, request, callback)
     local line = vim.api.nvim_get_current_line()
     for k, _ in pairs(source.config['typesDict']) do
       local index = string.match(line,[[^(]] .. k .. [[).*]])
-      if index ~= nil and self.config.typesDict[index].scopes ~= nil then
+      if index ~= nil and self.config.typesDict[k].scopes ~= nil then
+        print(index)
+        print(vim.inspect(self.config.typesDict[k].scopes))
         return callback({
-            items = self:_get_candidates_scope(self.config.typesDict[index].scopes),
+            items = self:_get_candidates_scope(self.config.typesDict[k].scopes),
             isIncomplete = true
           })
       end
