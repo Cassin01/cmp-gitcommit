@@ -1,6 +1,6 @@
 # cmp-gitcommit
 
-gitcommit source for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+`gitcommit` source for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 
 forked from [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
 
