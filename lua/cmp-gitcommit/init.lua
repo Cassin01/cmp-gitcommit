@@ -104,9 +104,11 @@ source.new = function()
   -- source.types = source.setup()
   -- print("ff")
   -- print(vim.inspect(source.types))
+  local types = {}
   for k, v in pairs(source.setup()) do
-    table.insert(source.types, v)
+    table.insert(types, v)
   end
+  source.types = types
   -- source.types = {
   --   typesDict['build'], typesDict['chore'], typesDict['ci'],
   --   typesDict['docs'], typesDict['feat'], typesDict['fix'], typesDict['perf'],
