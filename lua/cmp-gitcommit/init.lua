@@ -142,6 +142,7 @@ end
 source.complete = function(self, request, callback)
   if (request.context.option.reason == 'manual' and request.context.cursor.row == 1 and request.context.cursor.col == 1) or
     (request.context.option.reason == 'auto' and request.context.cursor.row == 1 and request.context.cursor.col == 2) then
+    print(vim.inspect(self.types))
     callback({
         items = self:_get_candidates(self.types),
         isIncomplete = true,
@@ -151,8 +152,6 @@ source.complete = function(self, request, callback)
     for k, _ in pairs(source.config['typesDict']) do
       local index = string.match(line,[[^(]] .. k .. [[).*]])
       if index ~= nil and self.config.typesDict[k].scopes ~= nil then
-        print(index)
-        print(vim.inspect(self.config.typesDict[k].scopes))
         return callback({
             items = self:_get_candidates_scope(self.config.typesDict[k].scopes),
             isIncomplete = true
