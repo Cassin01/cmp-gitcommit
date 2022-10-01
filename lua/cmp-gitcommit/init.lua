@@ -55,13 +55,14 @@ typesDict['test'] = {
 
 function source.setup(config) 
   local cnf = config or {}
+  local ret = {}
   if cnf['typesDict'] ~= nil then
-    source.config['typesDict'] = typesDict
+    ret['typesDict'] = typesDict
   end
   if cnf['insertText'] ~= nil then
-    source.conofig['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
+    ret['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
   end
-  print("setup called")
+  vim.g['cmp_gitcomment_config'] = ret
 end
 
 local function split (inputstr, sep)
@@ -103,6 +104,7 @@ local function load_names()
 end
 
 source.new = function()
+  source.config = vim.g['cmp_gitcomment_config']
   source.names = load_names()
 
   local types = {}
