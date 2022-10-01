@@ -30,7 +30,3 @@ require('cmp').setup {
 ## Forked from:
 
 [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
-
-## TODO
-
-- [ ] use the configuration of [rcz](https://github.com/Cassin01/rcz)
