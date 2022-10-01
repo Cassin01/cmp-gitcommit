@@ -15,6 +15,7 @@ typesDict['ci'] = {
   label = 'ci',
   emoji = '👷',
   documentation = 'Changes to our CI configuration files and scripts',
+  scopes = {'Travisi', 'Circle', 'BrowserStack', 'SauceLabs'}
 }
 typesDict['docs'] = {
   label = 'docs',
@@ -146,10 +147,18 @@ source.complete = function(self, request, callback)
       })
 
   elseif is_scope(request) and request.context.cursor.row == 1 then
-    callback({
-      items = self:_get_candidates_scope(self.scopes),
-      isIncomplete = true
-    })
+    local line = vim.api.nvim_get_current_line()
+    for k, _ in pairs(source.config['typesDict']) do
+      local index = string.match(line,[[^(]] .. k .. [[).*]])
+      print(index)
+      if index ~= nil then
+        return callback({
+            items = self:_get_candidates_scope(self.scopes[index]),
+            isIncomplete = true
+          })
+      end
+      callback()
+    end
   else
     callback()
   end
