@@ -57,7 +57,7 @@ return [[\w\+]]
 end
 
 source.complete = function(self, request, callback)
-  if request.context.cursor.row ~= 1 or request.context.coursor.col ~= 1 then
+  if request.context.cursor.row ~= 1 or request.context.cursor.col ~= 1 then
     return callback()
   end
   local candidates = self:_get_candidates()
