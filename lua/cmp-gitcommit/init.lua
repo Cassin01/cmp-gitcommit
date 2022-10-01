@@ -45,7 +45,7 @@ source.new = function()
 end
 
 source.is_available = function()
-  vim.bo.filetype == 'gitcommt'
+  return vim.bo.filetype == 'gitcommt'
 end
 
 source.get_debug_name = function()
@@ -57,7 +57,7 @@ return [[\w\+]]
 end
 
 source.complete = function(self, request, callback)
-  if request.context.cursor.row ~= 1 or request.context.coursor.col ~= 1
+  if request.context.cursor.row ~= 1 or request.context.coursor.col ~= 1 then
     return callback()
   end
   local candidates = self:_get_candidates()
@@ -69,6 +69,7 @@ source.complete = function(self, request, callback)
 end
 
 function source:_get_candidates(entries)
+  local items = {}
    for k, v in ipairs(entries) do
     items[k] = {
       label = v.label,
