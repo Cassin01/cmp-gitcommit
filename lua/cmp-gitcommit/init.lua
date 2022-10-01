@@ -142,7 +142,6 @@ end
 source.complete = function(self, request, callback)
   if (request.context.option.reason == 'manual' and request.context.cursor.row == 1 and request.context.cursor.col == 1) or
     (request.context.option.reason == 'auto' and request.context.cursor.row == 1 and request.context.cursor.col == 2) then
-    print(vim.inspect(self.types))
     callback({
         items = self:_get_candidates(self.types),
         isIncomplete = true,
