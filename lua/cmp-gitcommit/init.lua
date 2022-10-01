@@ -45,7 +45,7 @@ source.new = function()
 end
 
 source.is_available = function()
-  return vim.bo.filetype == 'gitcommt'
+  return vim.bo.filetype == 'gitcommit'
 end
 
 source.get_debug_name = function()
