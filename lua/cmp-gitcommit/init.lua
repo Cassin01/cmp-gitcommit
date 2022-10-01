@@ -61,6 +61,7 @@ function source.setup(config)
   if cnf['insertText'] ~= nil then
     source.conofig['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
   end
+  print("setup called")
 end
 
 local function split (inputstr, sep)
