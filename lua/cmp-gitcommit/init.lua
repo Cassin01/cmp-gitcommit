@@ -5,6 +5,7 @@ typesDict['build'] = {
   label = 'build',
   emoji = '🔨',
   documentation = 'Changes that affect the build system or external dependencies',
+  scopes = {'gulp, broccoli, npm'}
 }
 typesDict['chore'] = {
   label = 'chore',
