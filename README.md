@@ -10,7 +10,6 @@
 
 ### Features that cmp-gitcommit provides but cmp-conventionalcommits
 
-- user configuration
 - no npm dependencies
 
 ### Features that cmp-conventionalcommits provides but cmp-gitcommit
@@ -44,42 +43,7 @@ use { 'Cassin01/cmp-gitcommit', after = { 'nvim-cmp' } }
 ```
 
 ```lua
-require('cmp').setup.buffer {
-  sources = require'cmp'.config.sources(
-  {{ name = 'gitcommit' }},
-  {{ name = 'buffer' }},
-  )
-}
-```
-
-## Configuration
-
-```lua
-use {
-  -- ...
-  config = function()
-    require('gitsigns').setup({
-      typesDict = {
-        ci = {
-          label = 'ci',
-          emoji = '👷',
-          documentation = 'Changes to our CI configuration files and scripts',
-          scopes = {'Travisi', 'Circle', 'BrowserStack', 'SauceLabs'} -- FEATURE custom scopes !!
-        }
-        style = {
-          label = 'style',
-          emoji = '🎨',
-          documentation = 'Changes that do not affect the meaning of the code',
-        }
-        test = {
-          label = 'test',
-          emoji = '🚨',
-          documentation = 'Adding missing tests or correcting existing tests',
-        }
-        -- ...
-      }
-      insertText = function(label, emoji) return label .. ":" .. emoji .. ' ' end
-    })
-  end
+require('cmp').setup {
+  sources = require'cmp'.config.sources({{ name = 'gitcommit' }})
 }
 ```
