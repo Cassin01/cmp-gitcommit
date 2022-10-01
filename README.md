@@ -30,3 +30,4 @@ require('cmp').setup {
 ## Forked from:
 
 [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
+
