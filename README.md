@@ -2,7 +2,7 @@
 
 gitcommit source for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 
-**This project is still work in progress. unstable.**
+forked from [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
 
 ## Usage
 
