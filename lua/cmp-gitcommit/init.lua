@@ -58,6 +58,7 @@ source.config['typesDict'] = typesDict
 source.config['insertText'] = function(label, emoji) return label .. ":" .. emoji .. ' ' end
 
 function source.setup(config) 
+  print("setup called")
   local cnf = config or source.config
   if cnf['typesDict'] ~= nil then
     source.config['typesDict'] = cnf['typesDict']
