@@ -79,7 +79,7 @@ end
 local function load_names()
   local current_dir_path = vim.fn.expand([[%:p:h]])
   -- local cmd = "(cd " .. current_dir_path .. " && git ls-files)"
-  local cmd = "(cd " .. current_dir_path .. " ; pwd)"
+  local cmd = "git ls-files --directory" .. current_dir_path
   local handle = io.popen(cmd)
   local scopes = handle:read("*a")
   handle:close()
