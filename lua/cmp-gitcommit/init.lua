@@ -82,8 +82,6 @@ local function load_names()
     return {}
   end
   local cmd = "(cd " .. current_dir_path .. " && git ls-files)"
-  -- local cmd = "git ls-files --directory " .. current_dir_path
-  print(cmd)
   local handle = io.popen(cmd)
   local scopes = handle:read("*a")
   handle:close()
@@ -91,7 +89,6 @@ local function load_names()
   local names = {}
   if scopes ~= "" then
     for line in scopes:gmatch("[^\r\n]+") do
-      print(line)
       for _, name in ipairs(split(line, [[/]])) do
         table.insert(names, name)
       end
