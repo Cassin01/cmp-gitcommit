@@ -77,7 +77,10 @@ local function split (inputstr, sep)
 end
 
 local function load_names()
-  local current_dir_path = vim.fn.expand([[%:p:h]])
+  local current_dir_path = vim.fn.expand([[%:p:h:h]])
+  if not vim.fn.isdirectory(current_dir_path) then
+    return {}
+  end
   local cmd = "(cd " .. current_dir_path .. " && git ls-files)"
   -- local cmd = "git ls-files --directory " .. current_dir_path
   print(cmd)
