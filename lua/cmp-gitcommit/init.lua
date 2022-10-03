@@ -77,9 +77,7 @@ local function split (inputstr, sep)
 end
 
 local function load_names()
-  local current_dir_path = vim.fn.expand([[%:p:h]])
-  local cmd = "(cd " .. current_dir_path .. " && git ls-files)"
-  local handle = io.popen(cmd)
+  local handle = io.popen([[git ls-files]])
   local scopes = handle:read("*a")
   handle:close()
 
