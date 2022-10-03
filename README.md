@@ -4,6 +4,13 @@
 
 `cmp-gitcommit` is a fork of [cmp-conventionalcommits](https://github.com/davidsierradz/cmp-conventionalcommits)
 
+<details>
+<summary>gif</summary>
+
+![gif](https://github.com/Cassin01/cmp-gitcommit/blob/eef73658a6039b79c72533255235ed2c1e166fa9/asset/screen.gif)
+
+</details>
+
 ## Features
 
 ### Features that cmp-gitcommit provides but cmp-conventionalcommits
@@ -16,6 +23,14 @@
 - commitlint support
 - lerna support
 
+### :warning: A shell command invoked incline
+
+```shell
+(cd {%p:h:h} && git ls-files)
+```
+
+If you are not POSIX compliant shell user, please make a request. I will deal with it.
+
 ### Sources that this plugin provides
 
 This plugin provides
@@ -26,12 +41,6 @@ This plugin provides
 
 sources for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 
-<details>
-<summary>gif</summary>
-
-![gif](https://github.com/Cassin01/cmp-gitcommit/blob/f8260925b519471a68f25c81f345ca414ad2f30a/asset/screenshot.gif)
-
-</details>
 
 ## Usage
 
