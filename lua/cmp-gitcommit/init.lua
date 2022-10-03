@@ -86,6 +86,7 @@ local function load_names()
   local names = {}
   if scopes ~= "" then
     for line in scopes:gmatch("[^\r\n]+") do
+      print(line)
       for _, name in ipairs(split(line, [[/]])) do
         table.insert(names, name)
       end
