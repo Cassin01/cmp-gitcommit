@@ -40,13 +40,6 @@ This plugin provides
 
 sources for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 
-<details>
-<summary>gif</summary>
-
-![gif](https://github.com/Cassin01/cmp-gitcommit/blob/eef73658a6039b79c72533255235ed2c1e166fa9/asset/screen.gif)
-
-</details>
-
 ## Usage
 
 Packer
